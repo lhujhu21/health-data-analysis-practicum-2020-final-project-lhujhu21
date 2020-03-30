@@ -1,0 +1,57 @@
+---
+title: "Final Project: Draft 1"
+author: "Your Name"
+date: "Today's date"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r libraries, include=FALSE}
+library(tidyverse)
+# any other libraries you want to load
+```
+
+### Question of interest
+
+This is where you will describe your question of interest.  Give background information to your question if necessary.
+
+### Data
+
+Briefly describe the data you plan to use to answer the question of interest.  Provide links to any publically available datasets. You can directly link to websites where your data is by including links in the following way: Here in the link to the [Johns Hopkins University homepage](https://www.jhu.edu/).
+
+```{r data, include=FALSE}
+# eventually you will include code to load your data here
+```
+
+### Variables of interest
+
+* **Outcome variable:**
+* **Primary predictor variable:**
+* **Possible confounders:**
+* **Potential effect modifiers:**
+
+### Directed acyclic graph (DAG)
+
+
+### Analysis plan
+
+What type of basic analysis could you use to address your question of interest?  Linear regression because your outcome is continuous?  Logistic regression because your outcome is binary?  How will you control for confounding in your analysis?  This section may change and be updated later as you continue with your analysis.
+
+
+```{r submission_instructions, include=FALSE, eval=FALSE}
+REMINDER:  When you are ready to submit your assignment, do ALL of the following:
+
+* First, knit your .Rmd file to see if it will compile.  If it doesn't knit, you can still follow the steps below to submit your assignment, but please try to resolve the knitting issues before you submit.  You can reach out to us at phbiostats@jhu.edu for help!
+* Next you need to **commit** the changes you've made to the document.  Click the colorful Git button at the top of the RStudio window and select "Commit" from the menu.
+* In the window that opens, **stage** your changes by clicking the check boxes next to the Rmd file.
+* In the "Commit message" box, type a short description of what changes you've made, something like: `Completed assignment`
+* Click the "Commit" button on the bottom right.
+* You'll see a window that will tell you about the changes that you've made.  Click "Close" to close the window.  You've successfully committed! You can close this commit window now.
+* After committing, you must **push** your changes to the repository on Github.  Do this by clicking the colorful Git button again and select "Push Branch".  
+* Again, you'll see a window open that tells you your changes have been pushed!
+* If you want, you can look at your repository on [Github.com](https://github.com/) and should be able to see your changes there!  
+* You've successfully submitted your assignment :)
+```
