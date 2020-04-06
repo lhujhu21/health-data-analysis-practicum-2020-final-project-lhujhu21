@@ -1,6 +1,6 @@
 ---
 title: "Final Project: Draft 1"
-author: "Your Name"
+author: "Lucy Hu"
 date: "Today's date"
 output: html_document
 ---
@@ -16,29 +16,38 @@ library(tidyverse)
 
 ### Question of interest
 
-This is where you will describe your question of interest.  Give background information to your question if necessary.
+Human papillomavirus (HPV) is a group of related viruses that is often associated with being a common sexually transmitted infection. However, it has also been linked with various cancers such as cervical cancers, genital cancers, and oral/throat cancers. 
+
+The HPV vaccine was first approved in 2006 and has been shown to be safe and effective at protecting against cancer-causing serotypes of the virus. It is also one of the most controversial vaccines and is only considered mandatory in 4 regions of the US (Washington DC, Hawaii, Rhode Island, and Virginia). As such, vaccination rates across the US vary widely. 
+
+The main question of interest in this analysis is: What factors are related to HPV vaccination rates?
 
 ### Data
+The data for this analysis comes from the [CDC's 2018 Adolescent HPV Vaccination Coverage Report](https://www.cdc.gov/vaccines/imz-managers/coverage/teenvaxview/data-reports/hpv/reports/2018.html). This report contains coverage data from all 50 states as well as 3 US territories and the United States as a whole. It also contains data on race, poverty level, and number of vaccine doses. 
 
-Briefly describe the data you plan to use to answer the question of interest.  Provide links to any publically available datasets. You can directly link to websites where your data is by including links in the following way: Here in the link to the [Johns Hopkins University homepage](https://www.jhu.edu/).
+
+<!-- Briefly describe the data you plan to use to answer the question of interest.  Provide links to any publically available datasets. You can directly link to websites where your data is by including links in the following way: Here in the link to the [Johns Hopkins University homepage](https://www.jhu.edu/). -->
 
 ```{r data, include=FALSE}
 # eventually you will include code to load your data here
+HPV_data <- read_csv("HPV_VC.csv")
+
 ```
 
 ### Variables of interest
 
-* **Outcome variable:**
-* **Primary predictor variable:**
-* **Possible confounders:**
+* **Outcome variable: State HPV vaccine coverage**
+* **Primary predictor variable: poverty**
+* **Possible confounders: political leaning, gender**
 * **Potential effect modifiers:**
 
 ### Directed acyclic graph (DAG)
 
 
 ### Analysis plan
+Most likely will use linear regression as this outcome is not binary. I will probably need to find additional data and information on population characteristics in order to control for  confounding. 
 
-What type of basic analysis could you use to address your question of interest?  Linear regression because your outcome is continuous?  Logistic regression because your outcome is binary?  How will you control for confounding in your analysis?  This section may change and be updated later as you continue with your analysis.
+<!-- What type of basic analysis could you use to address your question of interest?  Linear regression because your outcome is continuous?  Logistic regression because your outcome is binary?  How will you control for confounding in your analysis?  This section may change and be updated later as you continue with your analysis. -->
 
 
 ```{r submission_instructions, include=FALSE, eval=FALSE}
