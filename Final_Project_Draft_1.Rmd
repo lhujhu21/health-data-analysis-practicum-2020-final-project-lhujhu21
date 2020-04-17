@@ -1,7 +1,7 @@
 ---
-title: "Final Project: Draft 1"
+title: "Final Project"
 author: "Lucy Hu"
-date: "Today's date"
+date: "April 12, 2020"
 output: html_document
 ---
 
@@ -23,14 +23,41 @@ The HPV vaccine was first approved in 2006 and has been shown to be safe and eff
 The main question of interest in this analysis is: What factors are related to HPV vaccination rates?
 
 ### Data
-The data for this analysis comes from the [CDC's 2018 Adolescent HPV Vaccination Coverage Report](https://www.cdc.gov/vaccines/imz-managers/coverage/teenvaxview/data-reports/hpv/reports/2018.html). This report contains coverage data from all 50 states as well as 3 US territories and the United States as a whole. It also contains data on race, poverty level, and number of vaccine doses. 
+The data for this analysis comes from the [CDC's 2018 Adolescent HPV Vaccination Coverage Report](https://www.cdc.gov/vaccines/imz-managers/coverage/teenvaxview/data-reports/hpv/reports/2018.html). This report contains coverage data from all 50 states as well as 3 US territories and the United States as a whole. It also contains data on race, poverty level, and number of vaccine doses. For the sake of this analysis, I'll be concentrating on the data for teens who are up to date for the HPV vaccine. 
 
 
 <!-- Briefly describe the data you plan to use to answer the question of interest.  Provide links to any publically available datasets. You can directly link to websites where your data is by including links in the following way: Here in the link to the [Johns Hopkins University homepage](https://www.jhu.edu/). -->
 
 ```{r data, include=FALSE}
 # eventually you will include code to load your data here
-HPV_data <- read_csv("HPV_VC.csv")
+HPV_data <- read_csv("HPV_CONDENSED.csv")
+politics_data <- read_csv("leanings 2.csv")
+
+df <- data.frame(HPV_data)
+p_df <- data.frame(politics_data)
+p2_df <- p_df[ , "leanings", drop = FALSE]
+
+
+
+# <- dataframe[c(row numbers), c(column numbers)], numbers are inclusive
+named_df <- 
+  df %>% 
+    select(states = X1,
+           rates = HPV.Vaccination.Up.To.Date..Males.and.Females...Age
+           )
+overview_df <- named_df[c(3:54),c(1:2)]
+
+overview_df$leanings=p2_df
+
+order <- order(overview_df$rates)
+sorted <- overview_df[order, ]
+
+
+sorted <- sorted %>%
+  mutate (leanings = factor(leanings,
+                            level = c("blue","red","gray"),
+                            labels = c("blue","red","gray"))
+          )
 
 ```
 
@@ -48,6 +75,57 @@ HPV_data <- read_csv("HPV_VC.csv")
 Most likely will use linear regression as this outcome is not binary. I will probably need to find additional data and information on population characteristics in order to control for  confounding. 
 
 <!-- What type of basic analysis could you use to address your question of interest?  Linear regression because your outcome is continuous?  Logistic regression because your outcome is binary?  How will you control for confounding in your analysis?  This section may change and be updated later as you continue with your analysis. -->
+
+### Preliminary graphs 
+To get an overview of what the current status of vaccination is in the United States and some territories, this is a plot of the percentage of teens (ages 13-17) who are up to date with their HPV vaccines. 
+```{r, echo=FALSE}
+ggplot(overview_df, aes(x=states, y=rates)) +
+  geom_bar(stat="identity",  fill="steelblue") +
+  theme_minimal() + 
+  geom_text(aes(label=rates), vjust=-0.3, size=2) + 
+  theme(axis.text.x = element_text(size=9, angle=90),
+        axis.text.y = element_text(size=9)) +
+  labs(title = "HPV Vaccination Rates by State", x = "State", y = "Rate") 
+```
+
+I've also presented this information sorted by rate:
+```{r, echo=FALSE}
+sorted$states <- factor(sorted$states, levels = sorted$states[order(sorted$rates)])
+
+# palette
+pal <- c(
+  "blue" = "#3449eb",
+  "red" = "#eb3434",
+  "gray" = "#c5c6c9"
+)
+
+p0 <- ggplot(sorted, aes(x=states, y=rates)) +
+  geom_bar(stat="identity",  fill="steelblue") +
+  theme_minimal() + 
+  geom_text(aes(label=rates), vjust=-0.3, size=2) + 
+  theme(axis.text.x = element_text(size=9, angle=90),
+        axis.text.y = element_text(size=9)) +
+  labs(title = "HPV Vaccination Rates by State", x = "State", y = "Rate") + 
+  scale_fill_manual(
+    values = pal,
+    limits = names(pal)
+  )
+
+p <- ggplot(sorted, aes(x=states, y=rates, fill="leanings")) +
+  geom_bar(stat="identity") +
+  theme_minimal() + 
+  geom_text(aes(label=rates), vjust=-0.3, size=3) + 
+  theme(axis.text.x = element_text(size=9, angle=90),
+        axis.text.y = element_text(size=9)) +
+  labs(title = "HPV Vaccination Rates by State", x = "State", y = "Rate") + 
+  scale_fill_manual(
+    values = pal,
+    limits = names(pal)
+  )
+
+p0
+p
+```
 
 
 ```{r submission_instructions, include=FALSE, eval=FALSE}
