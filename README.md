@@ -1,5 +1,11 @@
 # final-project
 
+##### Comments from Dr. Taub (4/23/2020): 
+
+* Given how late we got comments to you last week, it looks like you have not made any changes since the version I reviewed and commented on. Feel free to reach out as you make further progress if you want additional guidance or have questions!
+
+
+
 ##### Comments from Dr. Taub (4/17/2020): 
 
 * You made some nice progress this week, Lucy! 
