@@ -1,5 +1,14 @@
 # final-project
 
+##### Comments from Dr. Jager (5/6/2020): 
+
+* Your graphs look great!  I love the graphs showing the rates by state and with the political leanings colored.  
+* For gender and poverty status, I can see why you're not sure these are the best plots; they are a little bit overwhelming.  I wonder if it would make more sense to do an overall plot of poor vs. not poor rather than by state, and the same with gender, since most states seem to follow the trend that females have higher rates than males and that poor have higher rates than non-poor, however it looks like you don't have rates for the US overall in your dataset.  So you would have to combine them by adding up the number of F and M and dividing by adding up the sample sizes.  I've put some code for this in the file with `_LRJ_05062020.Rmd` at the end of the exploratory graphs section.  You could do something similar for poverty if you wanted.
+* You are on the right track with your Poisson model for fitting a separate model for overall adolescents, and then for males, and then for females.  For these models, what you want is the number who were vaccinated as your outcome and then the sample size as your offset.  However, if you want to put males and females in to the same model with a gender variable, we will have to do a little recoding of your dataset so that you have a column for state, a column for gender, a column for poverty, etc.  This involves a little more work to rearrange your data, and wouldn't be something you would know how to do on your own.  It basically involves making your "wide" dataset into a "long" dataset.  And based on the dataset you have, it would really only allow you to look at two variables at a time (gender and poverty, gender and race, etc). 
+* I think based on the complicated structure of your data, at this point I would recommend fitting separate models for a few different groups and then comparing the rates when you adjust for the political leanings variable.  I have included code for doing this for gender among the 13-17 age group.  I think there are some interesting things there when you compare the effect of political leaning on overall vaccination rates and then separately for male rates and female rates. Take a look; I've left some interpretation in the comments.
+* You could also do this for poverty groups instead of gender groups.  And you could put in the advDem variable instead of the leaning variable as well.
+* I hope this gets you started on some modeling.  Please reach out if you have questions as you're working through this, but I think these models will add to your graphs and make a very nice project!
+
 ##### Comments from Dr. Taub (4/23/2020): 
 
 * Given how late we got comments to you last week, it looks like you have not made any changes since the version I reviewed and commented on. Feel free to reach out as you make further progress if you want additional guidance or have questions!
