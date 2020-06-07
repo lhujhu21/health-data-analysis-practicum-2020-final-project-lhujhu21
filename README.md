@@ -1,6 +1,6 @@
 # final-project
 
-##### Comments from Dr. Jager (5/6/2020): 
+##### Comments from Dr. J (5/6/2020): 
 
 * Your graphs look great!  I love the graphs showing the rates by state and with the political leanings colored.  
 * For gender and poverty status, I can see why you're not sure these are the best plots; they are a little bit overwhelming.  I wonder if it would make more sense to do an overall plot of poor vs. not poor rather than by state, and the same with gender, since most states seem to follow the trend that females have higher rates than males and that poor have higher rates than non-poor, however it looks like you don't have rates for the US overall in your dataset.  So you would have to combine them by adding up the number of F and M and dividing by adding up the sample sizes.  I've put some code for this in the file with `_LRJ_05062020.Rmd` at the end of the exploratory graphs section.  You could do something similar for poverty if you wanted.
@@ -9,13 +9,13 @@
 * You could also do this for poverty groups instead of gender groups.  And you could put in the advDem variable instead of the leaning variable as well.
 * I hope this gets you started on some modeling.  Please reach out if you have questions as you're working through this, but I think these models will add to your graphs and make a very nice project!
 
-##### Comments from Dr. Taub (4/23/2020): 
+##### Comments from Dr. T (4/23/2020): 
 
 * Given how late we got comments to you last week, it looks like you have not made any changes since the version I reviewed and commented on. Feel free to reach out as you make further progress if you want additional guidance or have questions!
 
 
 
-##### Comments from Dr. Taub (4/17/2020): 
+##### Comments from Dr. T (4/17/2020): 
 
 * You made some nice progress this week, Lucy! 
 * I spent some time fiddling around with reading in and labeling your data, before I realized you only want to focus on the 13-17 age group. I have included some additonal lines of code (in a chunk labeled dataFull) to get the full data set in a workable format in the version of your project with my initials _MAT appended. So if you want to, you can take a look at this, or just ignore it. I did also make some changes to even the simpler set of data you wanted to use, in a chunk called dataSimple.
@@ -24,7 +24,7 @@
 * You will want to review the materials on Poisson regression that Dr. Jager posted earlier this week. It will be useful for your modeling.
 
 
-##### Comments from Dr. Taub (4/6/2020): 
+##### Comments from Dr. T (4/6/2020): 
 
 * Nice start, Lucy!
 * It looks like this data set will require some processing/wrangling. You need to skip a couple of lines when you are reading it in, but then only select certain columns, and it is not clear to me in looking at the csv file exactly what questions and responses are being recorded. Also, some states seem to have more than one measurement (i.e., some have measurements for specific counties) so that will also need to be dealt with.
